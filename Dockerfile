@@ -10,7 +10,7 @@ RUN export PATH="$HOME/.cargo/bin:$PATH" && cargo build --release
 
 FROM ubuntu:18.04
 
-RUN apt update && apt install libssl
+RUN apt update && apt install -y libssl-dev
 COPY --from=build /work/target/release/nodebridge /usr/bin/
 
-ENTRYPOINT ["/usr/bin/nodebridge"]
+#ENTRYPOINT ["/usr/bin/nodebridge"]
