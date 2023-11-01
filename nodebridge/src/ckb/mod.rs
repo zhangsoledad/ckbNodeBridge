@@ -201,10 +201,9 @@ fn submit_block(rpc_client: Client, job: MiningJob, solved_share: SolvedShare, d
     let block = job
         .block
         .clone()
-        .as_builder()
-        .header(header)
-        .build()
-        .into_view();
+        .as_advanced_builder()
+        .header(header.into_view())
+        .build();
     let hash = H256::from_slice(&block.hash().raw_data()).unwrap_or_default();
 
     create_block_record(
